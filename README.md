@@ -2,7 +2,7 @@
 
 Ruby implementations of simple machines, inspired by Understanding Computation by Tom Stuart(O’Reilly). Copyright 2013 Tom Stuart, 978-1-4493-2927-3.
 
-At the time of writing, the project contains an implementation for deterministic finite automata, via `DFA::Machine`, with more machines to be added as I continue to work through the examples in the book...
+At the time of writing, the project contains an implementation for deterministic / nondeterministic finite automata, via `DFA::Machine` and `NFA::Machine`, with more machines to be added as I continue to work through the examples in the book...
 
 The examples in this repository were written with the aid of tests, though the book itself does not define any automated tests, it does provide working implementations and suggests interfaces, on which the examples here are largely based.
 
