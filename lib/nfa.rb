@@ -22,8 +22,12 @@ module SimpleComputers
           rulebook.next_states(current_states, char)
       end
 
-      attr_accessor :current_states
+      attr_writer :current_states
       attr_reader :accept_states, :rulebook
+
+      def current_states
+        rulebook.free_moves(@current_states)
+      end
     end
   end
 end

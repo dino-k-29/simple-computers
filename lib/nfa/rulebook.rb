@@ -11,6 +11,16 @@ module SimpleComputers
         end.to_set
       end
 
+      def free_moves(states)
+        more_states = next_states(states, nil)
+
+        if more_states.subset?(states)
+          states
+        else
+          free_moves(states + more_states)
+        end
+      end
+
       private
 
       attr_reader :rules

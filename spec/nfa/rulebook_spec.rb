@@ -55,5 +55,42 @@ module SimpleComputers
         end
       end
     end
+
+    describe "#free_moves" do
+      let(:rule) { instance_double(FARule) }
+      let(:rulebook) { described_class.new([rule]) }
+
+      subject { rulebook.free_moves(Set[1]) }
+
+      before do
+        allow(rule).to receive(:applies_to?)
+                         .with(1, nil)
+                         .and_return(match)
+
+        allow(rule).to receive(:applies_to?)
+                         .with(3, nil)
+                         .and_return(false)
+      end
+
+      context "without any free move rules" do
+        let(:match) { false }
+
+        it "returns the input states" do
+          expect(subject).to eq(Set[1])
+        end
+      end
+
+      context "with a free move rule" do
+        let(:match) { true }
+
+        before do
+          allow(rule).to receive(:follow).and_return(3)
+        end
+
+        it "includes the next state from the free rule" do
+          expect(subject).to eq(Set[1, 3])
+        end
+      end
+    end
   end
 end
